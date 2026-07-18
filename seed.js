@@ -1,0 +1,204 @@
+const { MongoClient } = require('mongodb');
+const fs = require('fs');
+const path = require('path');
+
+// Read .env.local file to parse MONGODB_URI
+function loadEnv() {
+  const envPath = path.join(__dirname, '.env.local');
+  if (fs.existsSync(envPath)) {
+    const content = fs.readFileSync(envPath, 'utf8');
+    const lines = content.split('\n');
+    for (const line of lines) {
+      const match = line.match(/^\s*MONGODB_URI\s*=\s*(.*)\s*$/);
+      if (match) {
+        let uri = match[1].trim();
+        // Remove surrounding quotes if any
+        if ((uri.startsWith('"') && uri.endsWith('"')) || (uri.startsWith("'") && uri.endsWith("'"))) {
+          uri = uri.slice(1, -1);
+        }
+        return uri;
+      }
+    }
+  }
+  return null;
+}
+
+const MONGODB_URI = loadEnv() || process.env.MONGODB_URI;
+
+const sampleCourses = [
+  {
+    id: "course-1",
+    title: "Mastering Public Speaking & Presentation",
+    shortDescription: "Conquer stage fright, design impactful slides, and deliver speeches that captivate and persuade any audience.",
+    fullDescription: "Public speaking is a critical skill for career growth. This course takes you from a nervous speaker to a confident presenter. You will learn the psychology of stage fright, how to structure clear and engaging messages, and how to use your voice and body language to command the room. Through practical exercises, you will master the art of storytelling, impromptu speaking, and designing slide decks that support rather than distract from your message.",
+    price: 49.99,
+    rating: 4.8,
+    category: "Communication",
+    imageUrl: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
+    duration: "8 Hours",
+    level: "Intermediate",
+    modules: [
+      "Introduction to Public Speaking and the Psychology of Audience Engagement",
+      "Overcoming Stage Fright and Building Confidence",
+      "Structuring Your Message: Opening, Body, and Closing",
+      "Delivery Techniques: Vocal Variety, Pausing, and Body Language",
+      "Designing Visual Aids and Delivering High-Impact Slide Presentations",
+      "Impromptu Speaking and Q&A Management"
+    ],
+    reviews: [
+      { userId: "user-1", userName: "Sarah Jenkins", rating: 5, comment: "This course completely transformed how I present in meetings. The vocal variety exercises were incredibly helpful!", createdAt: new Date("2026-06-15T10:00:00Z") },
+      { userId: "user-2", userName: "Marcus Vance", rating: 4, comment: "Really solid content. Loved the tips on structuring slides.", createdAt: new Date("2026-06-20T14:30:00Z") }
+    ],
+    createdAt: new Date("2026-06-01T00:00:00Z")
+  },
+  {
+    id: "course-2",
+    title: "Leadership Foundations: Leading with Empathy",
+    shortDescription: "Learn to build high-trust teams, communicate with empathy, and resolve workplace conflicts constructively.",
+    fullDescription: "True leadership isn't about authority; it is about influence and trust. This course explores the foundations of empathetic leadership, giving you the tools to listen actively, support team members, and cultivate an inclusive work environment. You will examine leadership models, practice feedback structures that motivate, and learn conflict resolution strategies that turn disagreements into collaborative growth opportunities.",
+    price: 59.99,
+    rating: 4.9,
+    category: "Leadership",
+    imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+    duration: "10 Hours",
+    level: "Beginner",
+    modules: [
+      "The Shift from Manager to Leader: Empathetic Frameworks",
+      "Active Listening and Emotionally Intelligent Communication",
+      "Building a Culture of Psychological Safety and Mutual Trust",
+      "Delivering Constructive Feedback and Coaching Team Members",
+      "Conflict Resolution and Navigating Team Disagreements",
+      "Leading Teams Through Change and Organizational Transitions"
+    ],
+    reviews: [
+      { userId: "user-3", userName: "David Kim", rating: 5, comment: "Absolutely essential for new managers. The active listening frameworks are practical and immediately applicable.", createdAt: new Date("2026-06-10T09:00:00Z") }
+    ],
+    createdAt: new Date("2026-06-02T00:00:00Z")
+  },
+  {
+    id: "course-3",
+    title: "Emotional Intelligence at Work",
+    shortDescription: "Develop deep self-awareness, master self-regulation, and improve interpersonal relationship dynamics.",
+    fullDescription: "Emotional intelligence (EQ) is the single biggest predictor of performance in the workplace. In this course, you will learn the four domains of EQ: self-awareness, self-management, social awareness, and relationship management. You will discover how to recognize emotional triggers, remain calm under high stress, read micro-expressions and group dynamics, and apply emotional intelligence to foster collaboration and manage relationships effectively.",
+    price: 39.99,
+    rating: 4.7,
+    category: "Emotional Intelligence",
+    imageUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80",
+    duration: "6 Hours",
+    level: "Beginner",
+    modules: [
+      "Defining Emotional Intelligence and Understanding the Brain",
+      "Self-Awareness: Identifying Triggers and Behavioral Patterns",
+      "Self-Regulation: Stress Management and Staying Calm Under Pressure",
+      "Social Awareness: Reading the Room, Empathy, and Organizational Clues",
+      "Relationship Management: Inspiring Others and Managing Team Harmony",
+      "Creating a Personal EQ Action Plan"
+    ],
+    reviews: [
+      { userId: "user-4", userName: "Elena Rostova", rating: 5, comment: "A life-changing course. It helped me understand my reactions at work and rebuild my relationship with my boss.", createdAt: new Date("2026-07-01T15:00:00Z") },
+      { userId: "user-1", userName: "Sarah Jenkins", rating: 4, comment: "Very insightful and structured. Well worth the time.", createdAt: new Date("2026-07-05T11:20:00Z") }
+    ],
+    createdAt: new Date("2026-06-03T00:00:00Z")
+  },
+  {
+    id: "course-4",
+    title: "High-Impact Negotiation Strategies",
+    shortDescription: "Master win-win negotiation frameworks, handle hardball tactics, and claim value in crucial business deals.",
+    fullDescription: "Negotiation is not a battle; it is a collaborative problem-solving process. This advanced course teaches you the strategies used by top negotiators to secure win-win outcomes while claiming necessary value. You will learn to identify BATNA (Best Alternative to a Negotiated Agreement), establish anchor points, ask strategic questions, and defuse emotional conflicts. We will also analyze real-world case studies to help you negotiate salaries, sales, and partnerships.",
+    price: 79.99,
+    rating: 4.9,
+    category: "Communication",
+    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+    duration: "12 Hours",
+    level: "Advanced",
+    modules: [
+      "The Win-Win Negotiation Paradigm and Mutual Gains",
+      "Preparation: BATNA, ZOPA, and Setting Negotiation Goals",
+      "Value Creation vs. Value Claiming: Distributive and Integrative Strategies",
+      "Psychological Aspects: Anchoring, Empathy, and Building Rapport",
+      "Recognizing and Deflecting Hardball Tactics and Deception",
+      "Closing Deals, Formulating Agreements, and Multi-Party Negotiations"
+    ],
+    reviews: [],
+    createdAt: new Date("2026-06-04T00:00:00Z")
+  },
+  {
+    id: "course-5",
+    title: "Effective Time Management & Productivity",
+    shortDescription: "Overcome procrastination, master time-blocking, and construct a system for distraction-free focus.",
+    fullDescription: "Time is your most valuable non-renewable resource. This course provides a complete framework for taking control of your day. You will learn how to break the cycle of procrastination, categorize tasks using the Eisenhower Matrix, implement time-blocking, design a distraction-free digital workplace, and build energy management habits to sustain high productivity throughout the week.",
+    price: 29.99,
+    rating: 4.6,
+    category: "Productivity",
+    imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
+    duration: "5 Hours",
+    level: "Beginner",
+    modules: [
+      "The Psychology of Procrastination and How to Break It",
+      "Task Prioritization: The Eisenhower Matrix and Pareto Principle",
+      "Time-Blocking and Creating the Perfect Daily Schedule",
+      "Eliminating Digital Distractions and Building Deep Focus Cycles",
+      "Managing Work Energy vs. Managing Time",
+      "Tools and Workflows for Long-Term Productivity Tracking"
+    ],
+    reviews: [
+      { userId: "user-2", userName: "Marcus Vance", rating: 5, comment: "The daily scheduling and time blocking templates changed my life. Excellent course!", createdAt: new Date("2026-07-10T16:00:00Z") }
+    ],
+    createdAt: new Date("2026-06-05T00:00:00Z")
+  },
+  {
+    id: "course-6",
+    title: "Critical Thinking & Complex Problem Solving",
+    shortDescription: "Identify cognitive biases, employ creative frameworks, and make sound decisions under uncertainty.",
+    fullDescription: "We live in an information-heavy world where standard answers often fail. This course teaches you how to think critically and solve complex business problems. You will learn to spot cognitive biases in your decision-making, apply root cause analysis (like the 5 Whys and Fishbone diagram), run creative brainstorming sessions, and structure decision trees to evaluate multiple alternative solutions objectively.",
+    price: 69.99,
+    rating: 4.7,
+    category: "Critical Thinking",
+    imageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+    duration: "9 Hours",
+    level: "Intermediate",
+    modules: [
+      "Foundations of Critical Thinking: Logic and Reasoning",
+      "Cognitive Biases: Recognizing Faulty Thinking in Yourself and Others",
+      "Problem Identification: Root Cause Analysis and System Thinking",
+      "Creative Solution Engineering: Lateral Thinking and Mind Mapping",
+      "Decision-Making Frameworks Under Risk and Uncertainty",
+      "Implementation Plans, KPI Definition, and Continuous Improvement"
+    ],
+    reviews: [],
+    createdAt: new Date("2026-06-06T00:00:00Z")
+  }
+];
+
+async function seed() {
+  if (!MONGODB_URI) {
+    console.error("Error: MONGODB_URI is not set in .env.local");
+    process.exit(1);
+  }
+  console.log("Connecting to MongoDB Atlas Cluster...");
+  console.log("Connection URI:", MONGODB_URI.substring(0, 45) + "...");
+  
+  const client = new MongoClient(MONGODB_URI);
+  try {
+    await client.connect();
+    console.log("✓ Connected successfully to MongoDB Atlas!");
+
+    const db = client.db("softskills");
+    
+    // Clear old sample courses if any to avoid duplicates
+    console.log("Cleaning existing courses collection in MongoDB Atlas...");
+    await db.collection("courses").deleteMany({ id: { $in: sampleCourses.map(c => c.id) } });
+
+    console.log("Seeding sample courses to MongoDB Atlas...");
+    const result = await db.collection("courses").insertMany(sampleCourses);
+    console.log(`✓ Successfully seeded ${result.insertedCount} courses in softskills.courses collection!`);
+  } catch (err) {
+    console.error("❌ Seeding database Atlas connection failed:");
+    console.error(err);
+  } finally {
+    await client.close();
+    console.log("Database connection closed.");
+  }
+}
+
+seed();
