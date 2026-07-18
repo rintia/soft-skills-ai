@@ -1,0 +1,331 @@
+{
+  "user": [
+    {
+      "name": "Demo Learner",
+      "email": "learner@example.com",
+      "emailVerified": false,
+      "createdAt": "2026-07-18T17:02:46.290Z",
+      "updatedAt": "2026-07-18T17:02:46.290Z",
+      "_id": "6a5bb1b653ded4b0f91357d4",
+      "id": "6a5bb1b653ded4b0f91357d4",
+      "role": "user"
+    },
+    {
+      "name": "Demo Admin",
+      "email": "admin@example.com",
+      "emailVerified": false,
+      "createdAt": "2026-07-18T17:02:46.569Z",
+      "updatedAt": "2026-07-18T17:02:46.569Z",
+      "_id": "6a5bb1b653ded4b0f91357d8",
+      "id": "6a5bb1b653ded4b0f91357d8",
+      "role": "admin"
+    },
+    {
+      "name": "Rintia Islam",
+      "email": "rintiaislam110@gmail.com",
+      "emailVerified": false,
+      "createdAt": "2026-07-18T17:05:21.657Z",
+      "updatedAt": "2026-07-18T17:05:21.657Z",
+      "_id": "6a5bb25153ded4b0f91357dd",
+      "id": "6a5bb25153ded4b0f91357dd"
+    }
+  ],
+  "session": [
+    {
+      "expiresAt": "2026-07-25T17:02:46.298Z",
+      "token": "udUKLrsrOAAFUXzHJd1LegfZp1ViPGD4",
+      "createdAt": "2026-07-18T17:02:46.298Z",
+      "updatedAt": "2026-07-18T17:02:46.298Z",
+      "ipAddress": "",
+      "userAgent": "",
+      "userId": "6a5bb1b653ded4b0f91357d4",
+      "_id": "6a5bb1b653ded4b0f91357d6",
+      "id": "6a5bb1b653ded4b0f91357d6"
+    },
+    {
+      "expiresAt": "2026-07-25T17:02:46.385Z",
+      "token": "hgr5q6EMzls674H4td7KwT6g65bhT2Hm",
+      "createdAt": "2026-07-18T17:02:46.386Z",
+      "updatedAt": "2026-07-18T17:02:46.386Z",
+      "ipAddress": "",
+      "userAgent": "",
+      "userId": "6a5bb1b653ded4b0f91357d4",
+      "_id": "6a5bb1b653ded4b0f91357d7",
+      "id": "6a5bb1b653ded4b0f91357d7"
+    },
+    {
+      "expiresAt": "2026-07-25T17:02:46.576Z",
+      "token": "xjC3wf3nMJveBv0FsZgky6SLRqKC44Kb",
+      "createdAt": "2026-07-18T17:02:46.576Z",
+      "updatedAt": "2026-07-18T17:02:46.576Z",
+      "ipAddress": "",
+      "userAgent": "",
+      "userId": "6a5bb1b653ded4b0f91357d8",
+      "_id": "6a5bb1b653ded4b0f91357da",
+      "id": "6a5bb1b653ded4b0f91357da"
+    },
+    {
+      "expiresAt": "2026-07-25T17:02:46.652Z",
+      "token": "MOTK2E4DY8TlFB8NHfOtWM27At1cIOE5",
+      "createdAt": "2026-07-18T17:02:46.652Z",
+      "updatedAt": "2026-07-18T17:02:46.652Z",
+      "ipAddress": "",
+      "userAgent": "",
+      "userId": "6a5bb1b653ded4b0f91357d8",
+      "_id": "6a5bb1b653ded4b0f91357db",
+      "id": "6a5bb1b653ded4b0f91357db"
+    },
+    {
+      "expiresAt": "2026-07-25T17:05:21.676Z",
+      "token": "h3FiqRIdr8gi0tWvDzqnPN1SXb1MctNk",
+      "createdAt": "2026-07-18T17:05:21.677Z",
+      "updatedAt": "2026-07-18T17:05:21.677Z",
+      "ipAddress": "0000:0000:0000:0000:0000:0000:0000:0000",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "userId": "6a5bb25153ded4b0f91357dd",
+      "_id": "6a5bb25153ded4b0f91357df",
+      "id": "6a5bb25153ded4b0f91357df"
+    }
+  ],
+  "account": [
+    {
+      "accountId": "6a5bb1b653ded4b0f91357d4",
+      "providerId": "credential",
+      "userId": "6a5bb1b653ded4b0f91357d4",
+      "password": "236d093e407e285f4f35202ce1fe5ecc:53a1edb7d07a966fb55457e898055606b96c5b3fd3dcfca5664eb4e36715e0ae131d540ec52143ecf8dd54ce3ab5c1dfa79731a336c34830cbce92314599ad9d",
+      "createdAt": "2026-07-18T17:02:46.295Z",
+      "updatedAt": "2026-07-18T17:02:46.295Z",
+      "_id": "6a5bb1b653ded4b0f91357d5",
+      "id": "6a5bb1b653ded4b0f91357d5"
+    },
+    {
+      "accountId": "6a5bb1b653ded4b0f91357d8",
+      "providerId": "credential",
+      "userId": "6a5bb1b653ded4b0f91357d8",
+      "password": "6922c3d918634b249a80ff5a3cde2a8d:2b96bf9ee06586814a89b142dacf1456fd2cbdcecc9721ddcced1bde709999b90fe80317c5d4fd68cf62d7695f4dba463b9a00ce9450702453f28a994b2c717c",
+      "createdAt": "2026-07-18T17:02:46.572Z",
+      "updatedAt": "2026-07-18T17:02:46.572Z",
+      "_id": "6a5bb1b653ded4b0f91357d9",
+      "id": "6a5bb1b653ded4b0f91357d9"
+    },
+    {
+      "accountId": "6a5bb25153ded4b0f91357dd",
+      "providerId": "credential",
+      "userId": "6a5bb25153ded4b0f91357dd",
+      "password": "c37b349580e97c42fb19033d1a1dff86:b04aa64d917f3c585b2544cc05abf7e00304dba4ad942b1a37a9b588700be3e73127722b1672ad4fdb690362561e51b5398b0a724ed393c0bddc8d05bbb2a411",
+      "createdAt": "2026-07-18T17:05:21.659Z",
+      "updatedAt": "2026-07-18T17:05:21.659Z",
+      "_id": "6a5bb25153ded4b0f91357de",
+      "id": "6a5bb25153ded4b0f91357de"
+    }
+  ],
+  "verification": [
+    {
+      "identifier": "xWayB8Tj7amkXp01hr-P0v40d12N9bPd",
+      "value": "{\"callbackURL\":\"/courses\",\"codeVerifier\":\"d8o3IMFYK2v5A-NbegapdOARFTm87VrtJ6jeAtEqtZSGDI2ZvUfaLbnDlZYCduf-wtZzd71YMm9CNxGCVLNhhmiSth5sNVz0fM7KcvNQ7qlemGgd9ZpB55eZvsiQbVuy\",\"expiresAt\":1784394891812,\"oauthState\":\"xWayB8Tj7amkXp01hr-P0v40d12N9bPd\"}",
+      "expiresAt": "2026-07-18T17:14:51.815Z",
+      "createdAt": "2026-07-18T17:04:51.815Z",
+      "updatedAt": "2026-07-18T17:04:51.815Z",
+      "_id": "6a5bb23353ded4b0f91357dc",
+      "id": "6a5bb23353ded4b0f91357dc"
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-1",
+      "title": "Mastering Public Speaking & Presentation",
+      "shortDescription": "Conquer stage fright, design impactful slides, and deliver speeches that captivate and persuade any audience.",
+      "fullDescription": "Public speaking is a critical skill for career growth. This course takes you from a nervous speaker to a confident presenter. You will learn the psychology of stage fright, how to structure clear and engaging messages, and how to use your voice and body language to command the room. Through practical exercises, you will master the art of storytelling, impromptu speaking, and designing slide decks that support rather than distract from your message.",
+      "price": 49.99,
+      "rating": 4.8,
+      "category": "Communication",
+      "imageUrl": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
+      "duration": "8 Hours",
+      "level": "Intermediate",
+      "modules": [
+        "Introduction to Public Speaking and the Psychology of Audience Engagement",
+        "Overcoming Stage Fright and Building Confidence",
+        "Structuring Your Message: Opening, Body, and Closing",
+        "Delivery Techniques: Vocal Variety, Pausing, and Body Language",
+        "Designing Visual Aids and Delivering High-Impact Slide Presentations",
+        "Impromptu Speaking and Q&A Management"
+      ],
+      "reviews": [
+        {
+          "userId": "user-1",
+          "userName": "Sarah Jenkins",
+          "rating": 5,
+          "comment": "This course completely transformed how I present in meetings. The vocal variety exercises were incredibly helpful!",
+          "createdAt": "2026-06-15T10:00:00.000Z"
+        },
+        {
+          "userId": "user-2",
+          "userName": "Marcus Vance",
+          "rating": 4,
+          "comment": "Really solid content. Loved the tips on structuring slides.",
+          "createdAt": "2026-06-20T14:30:00.000Z"
+        }
+      ],
+      "createdAt": "2026-06-01T00:00:00.000Z"
+    },
+    {
+      "id": "course-2",
+      "title": "Leadership Foundations: Leading with Empathy",
+      "shortDescription": "Learn to build high-trust teams, communicate with empathy, and resolve workplace conflicts constructively.",
+      "fullDescription": "True leadership isn't about authority; it is about influence and trust. This course explores the foundations of empathetic leadership, giving you the tools to listen actively, support team members, and cultivate an inclusive work environment. You will examine leadership models, practice feedback structures that motivate, and learn conflict resolution strategies that turn disagreements into collaborative growth opportunities.",
+      "price": 59.99,
+      "rating": 4.9,
+      "category": "Leadership",
+      "imageUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+      "duration": "10 Hours",
+      "level": "Beginner",
+      "modules": [
+        "The Shift from Manager to Leader: Empathetic Frameworks",
+        "Active Listening and Emotionally Intelligent Communication",
+        "Building a Culture of Psychological Safety and Mutual Trust",
+        "Delivering Constructive Feedback and Coaching Team Members",
+        "Conflict Resolution and Navigating Team Disagreements",
+        "Leading Teams Through Change and Organizational Transitions"
+      ],
+      "reviews": [
+        {
+          "userId": "user-3",
+          "userName": "David Kim",
+          "rating": 5,
+          "comment": "Absolutely essential for new managers. The active listening frameworks are practical and immediately applicable.",
+          "createdAt": "2026-06-10T09:00:00.000Z"
+        }
+      ],
+      "createdAt": "2026-06-02T00:00:00.000Z"
+    },
+    {
+      "id": "course-3",
+      "title": "Emotional Intelligence at Work",
+      "shortDescription": "Develop deep self-awareness, master self-regulation, and improve interpersonal relationship dynamics.",
+      "fullDescription": "Emotional intelligence (EQ) is the single biggest predictor of performance in the workplace. In this course, you will learn the four domains of EQ: self-awareness, self-management, social awareness, and relationship management. You will discover how to recognize emotional triggers, remain calm under high stress, read micro-expressions and group dynamics, and apply emotional intelligence to foster collaboration and manage relationships effectively.",
+      "price": 39.99,
+      "rating": 4.7,
+      "category": "Emotional Intelligence",
+      "imageUrl": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80",
+      "duration": "6 Hours",
+      "level": "Beginner",
+      "modules": [
+        "Defining Emotional Intelligence and Understanding the Brain",
+        "Self-Awareness: Identifying Triggers and Behavioral Patterns",
+        "Self-Regulation: Stress Management and Staying Calm Under Pressure",
+        "Social Awareness: Reading the Room, Empathy, and Organizational Clues",
+        "Relationship Management: Inspiring Others and Managing Team Harmony",
+        "Creating a Personal EQ Action Plan"
+      ],
+      "reviews": [
+        {
+          "userId": "user-4",
+          "userName": "Elena Rostova",
+          "rating": 5,
+          "comment": "A life-changing course. It helped me understand my reactions at work and rebuild my relationship with my boss.",
+          "createdAt": "2026-07-01T15:00:00.000Z"
+        },
+        {
+          "userId": "user-1",
+          "userName": "Sarah Jenkins",
+          "rating": 4,
+          "comment": "Very insightful and structured. Well worth the time.",
+          "createdAt": "2026-07-05T11:20:00.000Z"
+        }
+      ],
+      "createdAt": "2026-06-03T00:00:00.000Z"
+    },
+    {
+      "id": "course-4",
+      "title": "High-Impact Negotiation Strategies",
+      "shortDescription": "Master win-win negotiation frameworks, handle hardball tactics, and claim value in crucial business deals.",
+      "fullDescription": "Negotiation is not a battle; it is a collaborative problem-solving process. This advanced course teaches you the strategies used by top negotiators to secure win-win outcomes while claiming necessary value. You will learn to identify BATNA (Best Alternative to a Negotiated Agreement), establish anchor points, ask strategic questions, and defuse emotional conflicts. We will also analyze real-world case studies to help you negotiate salaries, sales, and partnerships.",
+      "price": 79.99,
+      "rating": 4.9,
+      "category": "Communication",
+      "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+      "duration": "12 Hours",
+      "level": "Advanced",
+      "modules": [
+        "The Win-Win Negotiation Paradigm and Mutual Gains",
+        "Preparation: BATNA, ZOPA, and Setting Negotiation Goals",
+        "Value Creation vs. Value Claiming: Distributive and Integrative Strategies",
+        "Psychological Aspects: Anchoring, Empathy, and Building Rapport",
+        "Recognizing and Deflecting Hardball Tactics and Deception",
+        "Closing Deals, Formulating Agreements, and Multi-Party Negotiations"
+      ],
+      "reviews": [],
+      "createdAt": "2026-06-04T00:00:00.000Z"
+    },
+    {
+      "id": "course-5",
+      "title": "Effective Time Management & Productivity",
+      "shortDescription": "Overcome procrastination, master time-blocking, and construct a system for distraction-free focus.",
+      "fullDescription": "Time is your most valuable non-renewable resource. This course provides a complete framework for taking control of your day. You will learn how to break the cycle of procrastination, categorize tasks using the Eisenhower Matrix, implement time-blocking, design a distraction-free digital workplace, and build energy management habits to sustain high productivity throughout the week.",
+      "price": 29.99,
+      "rating": 4.6,
+      "category": "Productivity",
+      "imageUrl": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
+      "duration": "5 Hours",
+      "level": "Beginner",
+      "modules": [
+        "The Psychology of Procrastination and How to Break It",
+        "Task Prioritization: The Eisenhower Matrix and Pareto Principle",
+        "Time-Blocking and Creating the Perfect Daily Schedule",
+        "Eliminating Digital Distractions and Building Deep Focus Cycles",
+        "Managing Work Energy vs. Managing Time",
+        "Tools and Workflows for Long-Term Productivity Tracking"
+      ],
+      "reviews": [
+        {
+          "userId": "user-2",
+          "userName": "Marcus Vance",
+          "rating": 5,
+          "comment": "The daily scheduling and time blocking templates changed my life. Excellent course!",
+          "createdAt": "2026-07-10T16:00:00.000Z"
+        }
+      ],
+      "createdAt": "2026-06-05T00:00:00.000Z"
+    },
+    {
+      "id": "course-6",
+      "title": "Critical Thinking & Complex Problem Solving",
+      "shortDescription": "Identify cognitive biases, employ creative frameworks, and make sound decisions under uncertainty.",
+      "fullDescription": "We live in an information-heavy world where standard answers often fail. This course teaches you how to think critically and solve complex business problems. You will learn to spot cognitive biases in your decision-making, apply root cause analysis (like the 5 Whys and Fishbone diagram), run creative brainstorming sessions, and structure decision trees to evaluate multiple alternative solutions objectively.",
+      "price": 69.99,
+      "rating": 4.7,
+      "category": "Critical Thinking",
+      "imageUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+      "duration": "9 Hours",
+      "level": "Intermediate",
+      "modules": [
+        "Foundations of Critical Thinking: Logic and Reasoning",
+        "Cognitive Biases: Recognizing Faulty Thinking in Yourself and Others",
+        "Problem Identification: Root Cause Analysis and System Thinking",
+        "Creative Solution Engineering: Lateral Thinking and Mind Mapping",
+        "Decision-Making Frameworks Under Risk and Uncertainty",
+        "Implementation Plans, KPI Definition, and Continuous Improvement"
+      ],
+      "reviews": [],
+      "createdAt": "2026-06-06T00:00:00.000Z"
+    }
+  ],
+  "enrollments": [
+    {
+      "userId": "6a5bb25153ded4b0f91357dd",
+      "courseId": "course-6",
+      "amountPaid": 69.99,
+      "enrolledAt": "2026-07-18T17:06:53.212Z",
+      "_id": "g81ikraxrmt9ry9pa9w0k",
+      "id": "g81ikraxrmt9ry9pa9w0k"
+    },
+    {
+      "userId": "6a5bb25153ded4b0f91357dd",
+      "courseId": "course-4",
+      "amountPaid": 79.99,
+      "enrolledAt": "2026-07-18T17:07:45.315Z",
+      "_id": "mjahw21nw9b3az8zvbsz3h",
+      "id": "mjahw21nw9b3az8zvbsz3h"
+    }
+  ]
+}
