@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import clientPromise from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { ObjectId } from "mongodb";
 
 // POST: Add review for a course
 export async function POST(
@@ -34,8 +35,15 @@ export async function POST(
     const db = client.db("softskills");
     const collection = db.collection("courses");
 
+    let queryId: string | ObjectId = id;
+    try {
+      if (ObjectId.isValid(id)) {
+        queryId = new ObjectId(id);
+      }
+    } catch (e) {}
+
     const course = await collection.findOne({
-      $or: [{ _id: id }, { id: id }]
+      $or: [{ _id: id }, { id: id }, { _id: queryId }]
     });
 
     if (!course) {

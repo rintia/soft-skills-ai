@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import clientPromise from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { ObjectId } from "mongodb";
 
 // GET: Retrieve user's enrollments with course details
 export async function GET(request: Request) {
@@ -21,10 +22,18 @@ export async function GET(request: Request) {
     const db = client.db("softskills");
 
     // Check role to determine if admin
+    let queryId: string | ObjectId = session.user.id;
+    try {
+      if (ObjectId.isValid(session.user.id)) {
+        queryId = new ObjectId(session.user.id);
+      }
+    } catch (e) {}
+
     const userDoc = await db.collection("user").findOne({ 
-      $or: [{ _id: session.user.id }, { id: session.user.id }]
+      $or: [{ _id: session.user.id }, { id: session.user.id }, { _id: queryId }]
     });
     const role = userDoc?.role || (session.user as any).role || "user";
+
     const isAdmin = role === "admin" || session.user.email === "admin@example.com";
 
     // Build query based on role and parameters
@@ -42,15 +51,22 @@ export async function GET(request: Request) {
 
     // Retrieve course details for all enrolled courses
     const courseIds = enrollments.map((e: any) => e.courseId);
+    
+    const objectIdCourseIds = courseIds
+      .filter((id: string) => ObjectId.isValid(id))
+      .map((id: string) => new ObjectId(id));
+
     const courses = await db
       .collection("courses")
       .find({ 
         $or: [
           { _id: { $in: courseIds } },
-          { id: { $in: courseIds } }
+          { id: { $in: courseIds } },
+          ...(objectIdCourseIds.length > 0 ? [{ _id: { $in: objectIdCourseIds } }] : [])
         ]
       })
       .toArray();
+
 
     // Map course details onto enrollments
     const enrolledCourses = enrollments.map((enrollment: any) => {
@@ -90,8 +106,15 @@ export async function POST(request: Request) {
     const db = client.db("softskills");
 
     // Check if course exists
+    let queryCourseId: string | ObjectId = courseId;
+    try {
+      if (ObjectId.isValid(courseId)) {
+        queryCourseId = new ObjectId(courseId);
+      }
+    } catch (e) {}
+
     const course = await db.collection("courses").findOne({
-      $or: [{ _id: courseId }, { id: courseId }]
+      $or: [{ _id: courseId }, { id: courseId }, { _id: queryCourseId }]
     });
 
     if (!course) {

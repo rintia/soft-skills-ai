@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { authClient } from "@/lib/auth-client";
+import { useToast } from "@/components/ui/toast";
 import { 
   Star, 
   Clock, 
@@ -29,6 +30,7 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
   const router = useRouter();
   const queryClient = useQueryClient();
   const { data: session } = authClient.useSession();
+  const { toast } = useToast();
 
   // Local state
   const [activeModuleIndex, setActiveModuleIndex] = useState<number | null>(0);
@@ -96,8 +98,10 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["enrollments"] });
+      queryClient.invalidateQueries({ queryKey: ["my-enrollments"] });
       setPaymentLoading(false);
       setPaymentSuccess(true);
+      toast("Successfully enrolled in this course!", "success");
     },
     onError: (err: any) => {
       setPaymentLoading(false);
@@ -465,6 +469,7 @@ export default function CourseDetailsPage({ params }: { params: Promise<{ id: st
                       setShowPaymentModal(false);
                       setPaymentSuccess(false);
                       router.push("/my-courses");
+                      router.refresh();
                     }}
                     className="flex-1 rounded-xl h-11"
                   >

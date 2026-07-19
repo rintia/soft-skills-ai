@@ -7,6 +7,7 @@ import PageLayout from "@/components/PageLayout";
 import { Button } from "@/components/ui/button";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { authClient } from "@/lib/auth-client";
+import { useToast } from "@/components/ui/toast";
 import { 
   BarChart, 
   Bar, 
@@ -34,6 +35,7 @@ export default function ManageCoursesPage() {
   const router = useRouter();
   const queryClient = useQueryClient();
   const { data: session, isPending: sessionPending } = authClient.useSession();
+  const { toast } = useToast();
 
   // Local state for delete confirmation dialog
   const [courseToDelete, setCourseToDelete] = useState<{ id: string; title: string } | null>(null);
@@ -78,6 +80,7 @@ export default function ManageCoursesPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-courses"] });
       queryClient.invalidateQueries({ queryKey: ["courses"] });
+      toast("Course deleted successfully!", "success");
       setCourseToDelete(null);
       setDeleteLoading(false);
     },

@@ -6,7 +6,8 @@ import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, Home } from "lucide-react";
+import { useToast } from "@/components/ui/toast";
 
 const quotes = [
   {
@@ -28,6 +29,7 @@ const quotes = [
 
 export default function RegisterPage() {
   const router = useRouter();
+  const { toast } = useToast();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,6 +60,7 @@ export default function RegisterPage() {
       if (authError) {
         setError(authError.message || "Failed to create account");
       } else {
+        toast("Registration successful! Welcome to Soft Skills Mastery.", "success");
         router.push("/courses");
         router.refresh();
       }
@@ -67,6 +70,7 @@ export default function RegisterPage() {
       setLoading(false);
     }
   };
+
 
   const handleGoogleLogin = async () => {
     try {
@@ -80,7 +84,15 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-1 flex-col lg:flex-row bg-background">
+    <div className="relative flex min-h-screen flex-1 flex-col lg:flex-row bg-background">
+      <div className="absolute top-6 right-6 z-20">
+        <Link href="/">
+          <Button variant="ghost" size="sm" className="gap-2 rounded-xl text-muted-foreground hover:text-foreground">
+            <Home className="h-4 w-4" />
+            Back to Home
+          </Button>
+        </Link>
+      </div>
       {/* Left Branding Screen - Gradient Sidebar with Quotes */}
       <div className="relative hidden w-full lg:flex lg:w-1/2 flex-col justify-between bg-gradient-to-br from-teal-900 via-teal-950 to-slate-950 p-12 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-teal-800/10 via-transparent to-transparent pointer-events-none" />

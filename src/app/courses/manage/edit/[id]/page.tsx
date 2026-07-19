@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { authClient } from "@/lib/auth-client";
+import { useToast } from "@/components/ui/toast";
 import { 
   Sparkles, 
   ArrowLeft, 
@@ -23,6 +24,7 @@ export default function EditCoursePage({ params }: { params: Promise<{ id: strin
   const router = useRouter();
   const queryClient = useQueryClient();
   const { data: session, isPending: sessionPending } = authClient.useSession();
+  const { toast } = useToast();
 
   // Form states
   const [title, setTitle] = useState("");
@@ -117,6 +119,7 @@ export default function EditCoursePage({ params }: { params: Promise<{ id: strin
       queryClient.invalidateQueries({ queryKey: ["admin-courses"] });
       queryClient.invalidateQueries({ queryKey: ["courses"] });
       queryClient.invalidateQueries({ queryKey: ["course", id] });
+      toast("Course edited successfully!", "success");
       router.push("/courses/manage");
       router.refresh();
     },
