@@ -3,6 +3,7 @@
 Soft Skills Mastery is a modern, premium, and feature-rich Web Application designed to help professionals develop critical interpersonal and leadership skills. Powered by Next.js and integrated with Gemini Generative AI, the platform provides interactive learning, conversational support, and intuitive administration controls.
 
 ---
+## Live link: https://soft-skills-ai.vercel.app
 
 ## 🚀 Tech Stack
 
